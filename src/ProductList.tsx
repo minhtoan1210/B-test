@@ -70,32 +70,41 @@ export default function ProductList() {
         placeholder="Enter string"
         onChange={(e) => handleInputOnchange(e)}
       />
-      {prductData?.length > 0 && (
-        <div className="container">
-          {prductData.map((item: TProductItem, index: number) => {
-            if (prductData.length === index + 1) {
-              return (
-                <div className="card" key={item.id} ref={lastProductRef}>
-                  <img src={item.images[0]} alt="Avatar" />
-                  <h4>
-                    <b>{item.title}</b>
-                  </h4>
-                  <p>Giá: {item.price} $</p>
-                </div>
-              );
-            } else {
-              return (
-                <div className="card" key={item.id}>
-                  <img src={item.images[0]} alt="Avatar" />
-                  <h4>
-                    <b>{item.title}</b>
-                  </h4>
-                  <p>Giá: {item.price} $</p>
-                </div>
-              );
-            }
-          })}
-        </div>
+      {isLoading ? (
+        <>
+          {" "}
+          <h1>Loading....! </h1>
+        </>
+      ) : (
+        <>
+          {prductData?.length > 0 && (
+            <div className="container">
+              {prductData.map((item: TProductItem, index: number) => {
+                if (prductData.length === index + 1) {
+                  return (
+                    <div className="card" key={item.id} ref={lastProductRef}>
+                      <img src={item.images[0]} alt="Avatar" />
+                      <h4>
+                        <b>{item.title}</b>
+                      </h4>
+                      <p>Giá: {item.price} $</p>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div className="card" key={item.id}>
+                      <img src={item.images[0]} alt="Avatar" />
+                      <h4>
+                        <b>{item.title}</b>
+                      </h4>
+                      <p>Giá: {item.price} $</p>
+                    </div>
+                  );
+                }
+              })}
+            </div>
+          )}
+        </>
       )}
     </>
   );
