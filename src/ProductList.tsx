@@ -25,9 +25,6 @@ export default function ProductList() {
     ],
     queryFn: async () => {
       const res = await getAllProduct(dataParam);
-
-      console.log("res", res);
-
       return res?.data?.products;
     },
   });
@@ -58,7 +55,6 @@ export default function ProductList() {
 
   const handleInputOnchange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    console.log(value, 123);
     setKeyword(value);
     debounceDropDown(value);
   };
